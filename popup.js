@@ -163,7 +163,7 @@ transcribeBtn.addEventListener("click", async () => {
           outputDiv.textContent = `Transcript (first 500 chars):\n${transcript.slice(
             0,
             500
-          )}...\n\n✨ Summary:\n${summary}`;
+          )}...\n\nSummary:\n${summary}`;
         } catch (err) {
           console.error(err);
           outputDiv.textContent = "Error fetching transcript: " + err.message;
@@ -172,3 +172,4 @@ transcribeBtn.addEventListener("click", async () => {
     );
   });
 });
+
