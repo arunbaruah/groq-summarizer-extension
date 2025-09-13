@@ -65,17 +65,17 @@ summarizeBtn.addEventListener("click", async () => {
   const model = modelInput.value.trim();
 
   if (!apiKey) {
-    outputDiv.textContent = "❌ Please enter your Groq API key.";
+    outputDiv.textContent = "Please enter your Groq API key.";
     return;
   }
 
   const pageText = await getPageText();
   if (!pageText || pageText.length < 50) {
-    outputDiv.textContent = "⚠️ Could not extract enough text from this page.";
+    outputDiv.textContent = "Could not extract enough text from this page.";
     return;
   }
 
-  outputDiv.textContent = "⏳ Summarizing page...";
+  outputDiv.textContent = "Summarizing page...";
 
   try {
     const summary = await summarizeWithGroq(
@@ -86,7 +86,7 @@ summarizeBtn.addEventListener("click", async () => {
     outputDiv.textContent = summary;
   } catch (err) {
     console.error(err);
-    outputDiv.textContent = "❌ " + err.message;
+    outputDiv.textContent = "X" + err.message;
   }
 });
 
@@ -96,11 +96,11 @@ transcribeBtn.addEventListener("click", async () => {
   const model = modelInput.value.trim();
 
   if (!apiKey) {
-    outputDiv.textContent = "❌ Please enter your Groq API key.";
+    outputDiv.textContent = "Please enter your Groq API key.";
     return;
   }
 
-  outputDiv.textContent = "⏳ Fetching transcript...";
+  outputDiv.textContent = "Fetching transcript...";
 
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.scripting.executeScript(
@@ -119,7 +119,7 @@ transcribeBtn.addEventListener("click", async () => {
               return { error: "No captions found." };
             }
 
-            // ✅ Prefer English captions, fallback to first available
+            // Prefer English captions, fallback to first available
             let track = tracks.find(t => t.languageCode === "en") || tracks[0];
 
             return { trackUrl: track.baseUrl, lang: track.languageCode };
@@ -132,7 +132,7 @@ transcribeBtn.addEventListener("click", async () => {
         const res = results[0].result;
 
         if (res.error) {
-          outputDiv.textContent = "❌ " + res.error;
+          outputDiv.textContent = "X" + res.error;
           return;
         }
 
@@ -148,11 +148,11 @@ transcribeBtn.addEventListener("click", async () => {
             .join(" ");
 
           if (!transcript || transcript.length < 50) {
-            outputDiv.textContent = "⚠️ Could not extract transcript text.";
+            outputDiv.textContent = "Could not extract transcript text.";
             return;
           }
 
-          outputDiv.textContent = `⏳ Summarizing transcript (language: ${res.lang})...`;
+          outputDiv.textContent = `Summarizing transcript (language: ${res.lang})...`;
 
           const summary = await summarizeWithGroq(
             apiKey,
@@ -160,13 +160,13 @@ transcribeBtn.addEventListener("click", async () => {
             `Summarize this transcript:\n\n${transcript}`
           );
 
-          outputDiv.textContent = `📜 Transcript (first 500 chars):\n${transcript.slice(
+          outputDiv.textContent = `Transcript (first 500 chars):\n${transcript.slice(
             0,
             500
           )}...\n\n✨ Summary:\n${summary}`;
         } catch (err) {
           console.error(err);
-          outputDiv.textContent = "❌ Error fetching transcript: " + err.message;
+          outputDiv.textContent = "Error fetching transcript: " + err.message;
         }
       }
     );
