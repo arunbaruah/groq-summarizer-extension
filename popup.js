@@ -18,7 +18,7 @@ modelInput.addEventListener("change", () => {
   chrome.storage.local.set({ groqModel: modelInput.value });
 });
 
-// 🔹 Helper: call Groq API with fetch
+//  Helper: call Groq API with fetch
 async function summarizeWithGroq(apiKey, model, text) {
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
@@ -42,7 +42,7 @@ async function summarizeWithGroq(apiKey, model, text) {
   return data.choices[0].message.content;
 }
 
-// 🔹 Helper: get full page text
+//  Helper: get full page text
 function getPageText() {
   return new Promise((resolve) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -59,7 +59,7 @@ function getPageText() {
   });
 }
 
-// 🔹 Summarize page handler
+//  Summarize page handler
 summarizeBtn.addEventListener("click", async () => {
   const apiKey = apiKeyInput.value.trim();
   const model = modelInput.value.trim();
@@ -90,7 +90,7 @@ summarizeBtn.addEventListener("click", async () => {
   }
 });
 
-// 🔹 YouTube transcript + summarization handler
+//  YouTube transcript + summarization handler
 transcribeBtn.addEventListener("click", async () => {
   const apiKey = apiKeyInput.value.trim();
   const model = modelInput.value.trim();
@@ -172,4 +172,5 @@ transcribeBtn.addEventListener("click", async () => {
     );
   });
 });
+
 
