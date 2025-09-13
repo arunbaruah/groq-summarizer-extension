@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Groq Summarizer",
+  "description": "Summarize selected text or YouTube captions using Groq AI.",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Groq Summarizer"
+  },
+  "host_permissions": [
+    "https://api.groq.com/*"
+  ]
+}

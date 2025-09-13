@@ -1,0 +1,9 @@
+Run & Test
+
+Save all files in your extension folder.
+
+Go to chrome://extensions → enable Developer Mode → Load Unpacked → select the folder.
+
+Open any webpage → select text → click Summarize → see result.
+
+Open a YouTube video with captions → click Transcribe YouTube Video → get transcript + summary.

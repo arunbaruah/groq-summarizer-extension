@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Groq Summarizer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h2>Groq Summarizer</h2>
+
+  <label for="apiKey">Groq API Key:</label>
+  <input type="password" id="apiKey" placeholder="Enter API key" />
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" placeholder="openai/gpt-oss-20b" value="openai/gpt-oss-20b"/>
+
+  <button id="summarizeBtn">Summarize Selected Text</button>
+  <button id="transcribeBtn">Transcribe YouTube Video</button>
+
+  <div id="outputContainer">
+    <h3>Result:</h3>
+    <div id="output"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
