@@ -86,7 +86,7 @@ summarizeBtn.addEventListener("click", async () => {
     outputDiv.textContent = summary;
   } catch (err) {
     console.error(err);
-    outputDiv.textContent = "X" + err.message;
+    outputDiv.textContent =  err.message;
   }
 });
 
@@ -132,7 +132,7 @@ transcribeBtn.addEventListener("click", async () => {
         const res = results[0].result;
 
         if (res.error) {
-          outputDiv.textContent = "X" + res.error;
+          outputDiv.textContent =  res.error;
           return;
         }
 
@@ -172,5 +172,6 @@ transcribeBtn.addEventListener("click", async () => {
     );
   });
 });
+
 
 
